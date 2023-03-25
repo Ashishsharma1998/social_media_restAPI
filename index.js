@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const userApiRoutes = require("./routes/users");
 const authApiRoutes = require("./routes/auth");
-
+const postApiRoutes = require("./routes/post");
 const app = express();
 dotenv.config();
 
@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(morgan("common"));
 app.use("/api/user", userApiRoutes);
 app.use("/api/auth", authApiRoutes);
+app.use("/api/posts", postApiRoutes);
 
 app.listen(3000, async () => {
   console.log("server is runing at port 3000");
