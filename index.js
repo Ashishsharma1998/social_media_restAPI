@@ -12,8 +12,9 @@ const postApiRoutes = require("./routes/post");
 const app = express();
 dotenv.config();
 
-app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(cors());
+
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
@@ -23,7 +24,7 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.body.name);
   },
 });
 
