@@ -9,6 +9,8 @@ const path = require("path");
 const userApiRoutes = require("./routes/users");
 const authApiRoutes = require("./routes/auth");
 const postApiRoutes = require("./routes/post");
+const conversationApiRoutes = require("./routes/conversation");
+const messageApiRoutes = require("./routes/message");
 const app = express();
 dotenv.config();
 
@@ -41,6 +43,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/user", userApiRoutes);
 app.use("/api/auth", authApiRoutes);
 app.use("/api/posts", postApiRoutes);
+app.use("/api/conversations", conversationApiRoutes);
+app.use("/api/messages", messageApiRoutes);
 
 app.listen(3001, async () => {
   console.log("server is runing at port 3001");
